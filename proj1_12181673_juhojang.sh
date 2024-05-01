@@ -67,7 +67,7 @@ do
 			choice=$(awk -F, 'NR > 1{print $1}' "$1")
 			select team in $choice
 			do
-        			echo "$team"
+        			# echo "$team"
         			diff=$(awk -v club=$team -F, '$3==club{print $5 - $6}' "$3" | sort -r | head -n 1)
         			output=$(awk -v max=$diff -v club=$team -F, '$3==club && $5 - $6 == max {printf "%s\n%s %d vs %d %s\n", $1, $3, $5, $6, $4}' "$3")
         			printf "%s\n" ${output}
